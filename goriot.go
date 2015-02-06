@@ -52,6 +52,8 @@ var (
 	SEASON3 = "SEASON3"
 	//SEASON4 is the string of "SEASON4". Used to help prevent typos
 	SEASON4 = "SEASON4"
+	//SEASON5 is the string of "SEASON4". Used to help prevent typos
+	SEASON5 = "SEASON5"
 	//Ranked Solo 5s
 	RANKED_SOLO_5x5 = "RANKED_SOLO_5x5"
 	//Ranked Team 3s
