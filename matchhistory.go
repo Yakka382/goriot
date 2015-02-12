@@ -13,6 +13,7 @@ type MatchSummary struct {
 	MapID                 int                   `json:"mapId"`
 	MatchCreation         int64                 `json:"matchCreation"`
 	MatchDuration         int64                 `json:"matchDuration"`
+	MatchID               int64                 `json:"matchId"`
 	MatchVersion          string                `json:"matchVersion"`
 	ParticipantIdentities []ParticipantIdentity `json:"participantIdentities"`
 	Participants          []Participant         `json:"participants"`
@@ -22,6 +23,33 @@ type MatchSummary struct {
 }
 
 func MatchHistoryBySummonerID(
+	region string,
+	summonerID int64) (
+	playerHistory PlayerHistory, err error) {
+
+	if !IsKeySet() {
+		return playerHistory, ErrAPIKeyNotSet
+	}
+	args := fmt.Sprintf(
+		"api_key=%v",
+		apikey)
+	// build url string, request, return payload
+	url := fmt.Sprintf(
+		"https://%v.%v/lol/%v/v2.2/matchhistory/%d?%v",
+		region,
+		BaseURL,
+		region,
+		summonerID,
+		args)
+	err = requestAndUnmarshal(url, &playerHistory)
+	if err != nil {
+		return playerHistory, err
+	}
+
+	return playerHistory, nil
+}
+
+func MatchHistoryDetailBySummonerID(
 	region string,
 	summonerID int64,
 	championIDs []int64,

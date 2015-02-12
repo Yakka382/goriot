@@ -22,7 +22,7 @@ type MatchDetail struct {
 
 type Participant struct {
 	ChampionID    int                 `json:"championId"`
-	ParticipantID int                 `json:"participantId"`
+	ParticipantId int                 `json:"participantId"`
 	Spell1ID      int                 `json:"spell1Id"`
 	Spell2ID      int                 `json:"spell2Id"`
 	Stats         ParticipantStats    `json:"stats"`
@@ -155,6 +155,7 @@ type MatchPlayer struct {
 	MatchHistoryURI string `json:"matchHistoryUri"`
 	ProfileIcon     int    `json:"profileIcon"`
 	SummonerName    string `json:"summonerName"`
+	SummonerId      int64  `json:"summonerId"`
 }
 
 type BannedChampion struct {
